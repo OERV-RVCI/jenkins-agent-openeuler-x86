@@ -1,4 +1,4 @@
-FROM  openeuler/openeuler:24.03-lts-sp1
+FROM --platform=linux/amd64 hub.oepkgs.net/oerv-ci/openeuler:24.03-lts-sp1
 
 ARG user=jenkins
 ARG group=jenkins
@@ -7,6 +7,7 @@ ARG gid=1000
 ARG JENKINS_AGENT_HOME=/home/${user}
 
 ENV JENKINS_AGENT_HOME ${JENKINS_AGENT_HOME}
+ENV LANG='C.UTF-8' LC_ALL='C.UTF-8'
 
 # set mirror yum repo
 RUN sed -i /etc/yum.repos.d/openEuler.repo -e "s@repo.openeuler.org@mirrors.huaweicloud.com/openeuler@g" 
